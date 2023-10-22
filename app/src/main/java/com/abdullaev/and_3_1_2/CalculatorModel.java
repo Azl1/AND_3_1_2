@@ -25,9 +25,10 @@ public class CalculatorModel {
 
         if (state == State.resultShow) {
             state = State.firstArgInput;
+            inputStr.setLength(0);
         }
 
-        if(inputStr.length() > 9) {
+        if(inputStr.length() < 9) {
             switch (buttonId) {
                 case R.id.zero:
                     if (inputStr.length() != 0) {
@@ -89,6 +90,7 @@ public class CalculatorModel {
         } else if (inputStr.length() > 0 && state == State.firstArgInput) {
             firstArg = Integer.parseInt(inputStr.toString());
             state = State.secondArgInput;
+            inputStr.setLength(0);
             switch (actionId) {
                 case R.id.plus:
                     actionSelected = R.id.plus;
