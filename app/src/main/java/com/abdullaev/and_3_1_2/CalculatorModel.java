@@ -5,26 +5,26 @@ public class CalculatorModel {
     private int firstArg;
     private int secondArg;
 
-    StringBuilder inputStr = new StringBuilder();
+    private StringBuilder inputStr = new StringBuilder();
     private int actionSelected;
     private State state;
 
-    private enum State{
-        firstArgInput,
-        secondArgInput,
-        resultShow
+    private enum State {
+        FIRSTARGINPUT,
+        SECONDARGINPUT,
+        RESULTSHOW
 
     }
 
     public CalculatorModel() {
-        state = State.firstArgInput;
+        state = State.FIRSTARGINPUT;
 
     }
 
     public void onNumPressed(int buttonId){
 
-        if (state == State.resultShow) {
-            state = State.firstArgInput;
+        if (state == State.RESULTSHOW) {
+            state = State.FIRSTARGINPUT;
             inputStr.setLength(0);
         }
 
@@ -68,9 +68,9 @@ public class CalculatorModel {
 
     public void onActionPressed(int actionId){
 
-        if (actionId == R.id.equals && state == State.secondArgInput) {
+        if (actionId == R.id.equals && state == State.SECONDARGINPUT) {
             secondArg = Integer.parseInt(inputStr.toString());
-            state = State.resultShow;
+            state = State.RESULTSHOW;
             inputStr.setLength(0);
             switch (actionId) {
                 case R.id.plus:
@@ -87,9 +87,9 @@ public class CalculatorModel {
                     break;
             }
 
-        } else if (inputStr.length() > 0 && state == State.firstArgInput) {
+        } else if (inputStr.length() > 0 && state == State.FIRSTARGINPUT) {
             firstArg = Integer.parseInt(inputStr.toString());
-            state = State.secondArgInput;
+            state = State.SECONDARGINPUT;
             inputStr.setLength(0);
             switch (actionId) {
                 case R.id.plus:

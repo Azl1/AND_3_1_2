@@ -19,7 +19,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="16dp"
         android:textSize="32sp"
-        android:text="12345678910"
+        android:text=""
         android:background="@drawable/input_text"/>
 
     <LinearLayout
